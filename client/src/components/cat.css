@@ -1,0 +1,13 @@
+.bck
+{
+    background-image:url(https://tse4.mm.bing.net/th?id=OIP.bGJqbBXZtMzot11n3dFKswHaEo&pid=Api&P=0&w=275&h=173);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    height:88vh;
+}   
+
+.clr:hover
+{
+   background-color: rgb(58, 58, 192);
+}
