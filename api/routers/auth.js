@@ -11,6 +11,7 @@ let mailTransport=nodemailer.createTransport({
     pass:"8880012280"
     }
     })
+    
 //Register 
 router.post('/register', async (req,res) =>{
    

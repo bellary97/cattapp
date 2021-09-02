@@ -1,18 +1,16 @@
 const router = require('express').Router();
-const Movie = require('../models/Catdat');
-
-
+const Catt = require('../models/Catdat');
 
 
 router.post('/addcat',async (req, res)=>{
  
     let {title,img,year} = req.body
    
-    const movie = new Movie ({title:title,img:img,year:year});
+    const catt = new Catt ({title:title,img:img,year:year});
     
-    const result = await movie.save()
+    const result = await catt.save()
     console.log(result)
-    res.send("Movie data send successfully")
+    res.send("cat data send successfully")
     })
 
 
@@ -20,24 +18,24 @@ router.post('/addcat',async (req, res)=>{
  
     const id = req.params.id;
    
-    await Movie.findByIdAndRemove(id).exec()
+    await Catt.findByIdAndRemove(id).exec()
     res.send("Deleted");
     })
 
 //update
 router.put('/cat/:id', function(req, res,next){
-    Movie.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
-        Movie.findOne({_id:req.params.id}).then(function(data){
+    Catt.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
+        Catt.findOne({_id:req.params.id}).then(function(data){
             res.send(data);
         })
     })
 })
    
-   //get
+//get
    router.get('/cats',async (req, res) => {
     
        try{
-            const movie = await Movie.find()
+            const movie = await Catt.find()
             res.status(200).json(movie)
        }
        catch(err){
@@ -46,8 +44,9 @@ router.put('/cat/:id', function(req, res,next){
        
    })
 
+//likes update
    router.put("/like/:id",(req,res)=>{
-       Movie.findByIdAndUpdate(req.params.id,{
+       Catt.findByIdAndUpdate(req.params.id,{
            $push: {likes:req.body._id}
        },{
            new:true
@@ -59,8 +58,6 @@ router.put('/cat/:id', function(req, res,next){
     }})
    })
    
-
-
 
 //GET USER STATS
 

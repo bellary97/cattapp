@@ -13,7 +13,7 @@ export default function Cats() {
     let [title, settitle] = useState("")
     let [img, setimg] = useState("")
     let [year, setyear] = useState("")
-    // let [likes, setlikes] = useState("")
+   
     let [cat,setcat]=useState('Boots')
     let [catimg,setcatimg]=useState('https://tse1.mm.bing.net/th?id=OIP.ZEH8eq4a1Pd_AGD0EUTklwHaE8&pid=Api&P=0&w=225&h=151')
 
@@ -40,9 +40,7 @@ export default function Cats() {
        setimg(img)
        year=post.year;
        setyear(year)
-      //  likes=post.likes.length;
-      //  setlikes(likes)
-      
+
        dis() 
     }
      const display=(info)=>{
@@ -58,7 +56,6 @@ export default function Cats() {
         title:title,
         img:img,
         year:year,
-        // likes:likes
     }
       axios.put(`http://localhost:5000/api/movies/cat/${id}`,data)
         e.preventDefault()
@@ -66,22 +63,13 @@ export default function Cats() {
         result.title=title;
         result.img=img;
         result.year=year;
-        // result.likes.length=likes.length
-        // setpost()
         setShow(false)   
     }
      
    const handleDelete =(id)=> {
 
-        const admin = localStorage.getItem("isAdmin")
-        if(admin === "true")
-        {
           return axios.delete(`http://localhost:5000/api/movies/delete/${id}`)
-        }
-        else
-        {
-            alert('you are not allowed')
-        }
+        
    }
         
    const likepost=(id)=>{
@@ -177,14 +165,7 @@ export default function Cats() {
               value={year}  onChange={(e)=>setyear(e.target.value)}
             />
           </div> 
-          {/* <div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="no of likes"
-              value={likes}  onChange={(e)=>setlikes(e.target.value)}
-            />
-          </div>  */}
+         
         </form>
       </div>
     </div>

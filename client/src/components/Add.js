@@ -12,16 +12,9 @@ export default function Add(props) {
     
     const Adding = (e) => {
       e.preventDefault()
-      const admin = localStorage.getItem("isAdmin")
-      if(admin === "true")
-      {
+      
         axios.post('http://localhost:5000/api/movies/addcat',{title:title,img:img,year:year})
         history.push('/movie')
-      }
-      else
-      {
-        alert('you are not allowed')
-      }
       
       }
    

@@ -16,7 +16,7 @@ export default function Navbar() {
     <Link className="navbar-brand">Cat Clicker app</Link>
     <Link className="navbar-brand" to="/addings"><button className="btn btn-danger">Add Cats</button></Link>
     <Link to="/login"> <button className="btn btn-success" type="submit">Login</button></Link>
-     <Link to="/register" className="ml-3"><button className="btn btn-primary">Logout</button></Link>
+     <Link to="/" className="ml-3"><button className="btn btn-primary">Logout</button></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -37,7 +37,7 @@ export default function Navbar() {
 </nav>
         </div>
       <Switch>
-      <Route path="/register" exact component={Register}/>
+      <Route path="/" exact component={Register}/>
       <Route path="/login" component={Login}/>
       <Route path="/movie" component={Cats}/>
       <Route path="/addings" component={Add}/>
