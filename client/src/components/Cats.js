@@ -6,14 +6,12 @@ import "./cat.css"
 export default function Cats() {
 
     
-
     let [post, setpost] = useState([])
     let [show, setShow] = useState(false);
     let [id, setid] = useState("")
     let [title, settitle] = useState("")
     let [img, setimg] = useState("")
     let [year, setyear] = useState("")
-   
     let [cat,setcat]=useState('Boots')
     let [catimg,setcatimg]=useState('https://tse1.mm.bing.net/th?id=OIP.ZEH8eq4a1Pd_AGD0EUTklwHaE8&pid=Api&P=0&w=225&h=151')
 
@@ -68,7 +66,9 @@ export default function Cats() {
      
    const handleDelete =(id)=> {
 
-          return axios.delete(`http://localhost:5000/api/movies/delete/${id}`)
+          return axios.delete(`http://localhost:5000/api/movies/delete/${id}`).then(resp=>{
+            setpost(post.filter((ele)=>ele._id!==id))
+          })
         
    }
         
@@ -89,7 +89,6 @@ export default function Cats() {
         )
  })}
  </div>
-
  <div className="mx-5 col-md-4"> 
  <Card className="text-center">
   <Card.Header as="h5">Container</Card.Header>
@@ -174,7 +173,7 @@ export default function Cats() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={updatedmodel} >
+          <Button variant="primary" onClick={updatedmodel}>
             Save Changes
           </Button>
         </Modal.Footer>
